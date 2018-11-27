@@ -15,7 +15,7 @@ $insert="nome, telefone, email, senha, tipo, endereco";
 $values= "'$nome', '$telefone', '$email', '$senha', 0, '$endereco'";
 $result = cadastro($conecta,$tabela,$insert,$values);
 if($result)
-	header('Location: ../index.html');
+	header('Location: ../index.php');
 else
 	echo "erro de cadastro";
 }
@@ -65,6 +65,9 @@ $result=buscar($conecta,$selecao, $tabela, $where);
 
 		$_SESSION['login']=true;
 		$_SESSION['id']=$resultado['id'];
+		$_SESSION['tipo'] = $resultado['tipo'];
+		$_SESSION['nome'] = $resultado['nome'];
+
 		if ($resultado['tipo'] == 1) {
 			header('Location: ../admin.php');
 		}
@@ -111,5 +114,8 @@ if (isset($_GET['acao']) && ($_GET['acao']=="logout")) {
 }
 
 /*---------logout */
+
+
+
 
 ?>

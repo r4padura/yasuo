@@ -49,81 +49,8 @@ if (isset($_SESSION['login'])) {
 					<a href="#cardapio">Ver cardápio</a>
 				</div>
 			</div>
+		</header>
 
-			<div id="id01" class="modal">
-
-				<form class="modal-content animate" action="back/controlador.php" method="post">
-					<div class="imgcontainer">
-						<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-					</div>
-
-					<div class="container">
-						<label for="email"><b>E-mail</b></label>
-						<input type="email" placeholder="E-mail" name="email" required>
-
-						<label for="senha"><b>Senha</b></label>
-						<input type="password" placeholder="Senha" name="senha" required>
-						<center>
-							<button type="submit" name="acao" value="login">LOGIN</button>
-						</center>
-					</div>
-				</form>
-			</div>
-			<script>
-                // Abrir modal
-                var modal = document.getElementById('id01');
-
-                // Fechar o modal quando clicar fora
-                window.onclick = function(event) {
-                	if (event.target == modal) {
-                		modal.style.display = "none";
-                	}
-                }
-            </script>
-
-            <div id="id02" class="modal">
-
-            	<form class="modal-content animate" action="back/controlador.php" method="post">
-            		<div class="imgcontainer">
-            			<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-            		</div>
-
-            		<div class="container">
-            			<center>
-            				<h2>Cadastro</h2>
-            			</center>
-            			<label for="name"><b>Nome</b></label>
-            			<input type="text" placeholder="Digite seu nome completo" name="nome" required>
-
-            			<label for="endereco"><b>Endereço</b></label>
-            			<input type="text" placeholder="Digite seu endereço" name="endereco" required>
-
-            			<label for="telefone"><b>Telefone</b></label>
-            			<input type="text" placeholder="Digite seu número de telefone" name="telefone" required>
-
-            			<label for="email"><b>E-mail</b></label>
-            			<input type="email" placeholder="Digite seu melhor E-mail" name="email" required>
-
-            			<label for="senha"><b>Senha</b></label>
-            			<input type="password" placeholder="Digite uma senha" name="senha" required>
-            			<center>
-            				<button type="submit" name="acao" value="cadastro_cliente">CADASTRAR</button>
-            			</center>
-            		</div>
-            	</form>
-            </div>
-            <script>
-                // Abrir modal
-                var modal = document.getElementById('id02');
-
-                // Fechar o modal quando clicar fora
-                window.onclick = function(event) {
-                	if (event.target == modal) {
-                		modal.style.display = "none";
-                	}
-                }
-            </script>
-        </header>
         <section id="cardapio">
         	<div class="cardapio-bg">
         		<h1>Cardapio</h1>
@@ -148,9 +75,7 @@ if (isset($_SESSION['login'])) {
         		}, 1200);
         	});
         </script>
-
     </body>  
-    
     </html>  
     <?php 
 }
