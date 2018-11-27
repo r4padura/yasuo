@@ -38,46 +38,47 @@ if (isset($_SESSION['login'])) {
 					<div class="menu-logo">
 						<a href="index.php">Yasuo Pizzaria</a>
 					</div>
-					<nav class="menu-nav">
-						<a href="back/perfilUser.php">Perfil</a>
-						<a href="back/logout.php">SAIR</a>
-					</nav>
-				</div>
-				<div class="hero-text">
-					<h1>Yasuo Pizzaria</h1>
-					<h3>Confira nosso cardápio e faça seu pedido!</h3>
-					<a href="#cardapio">Ver cardápio</a>
-				</div>
-			</div>
-		</header>
+                    <nav class="menu-nav">
+                      <a href="back/pedido.php">Pedido</a>  
+                      <a href="back/perfilUser.php">Perfil</a>
+                      <a href="back/logout.php">SAIR</a>
+                  </nav>
+              </div>
+              <div class="hero-text">
+                 <h1>Yasuo Pizzaria</h1>
+                 <h3>Confira nosso cardápio e faça seu pedido!</h3>
+                 <a href="#cardapio">Ver cardápio</a>
+             </div>
+         </div>
+     </header>
 
-        <section id="cardapio">
-        	<div class="cardapio-bg">
-        		<h1>Cardapio</h1>
-        		<p>Veja nosso cardapio</p>
+     <section id="cardapio">
+         <div class="cardapio-bg">
+          <h1>Cardapio</h1>
+          <p>Veja nosso cardapio</p>
 
-        		<ul>
-        			<li>Pizza 1</li>
-        			<li>Pizza 2</li>
-        			<li>Pizza 3</li>
-        			<li>Pizza 4</li>
-        		</ul>
-        	</div>
-        </section>
-        <script>
-        	$('.hero-text a[href^="#"]').on('click', function(e) {
-        		e.preventDefault();
-        		var id = $(this).attr('href'),
-        		targetOffset = $(id).offset().top;
+          <ul>
+           <li>Pizza 1</li>
+           <li>Pizza 2</li>
+           <li>Pizza 3</li>
+           <li>Pizza 4</li>
+       </ul>
+   </div>
+</section>
+<script>
+ $('.hero-text a[href^="#"]').on('click', function(e) {
+  e.preventDefault();
+  var id = $(this).attr('href'),
+  targetOffset = $(id).offset().top;
 
-        		$('html, body').animate({ 
-        			scrollTop: targetOffset - 100
-        		}, 1200);
-        	});
-        </script>
-    </body>  
-    </html>  
-    <?php 
+  $('html, body').animate({ 
+   scrollTop: targetOffset - 100
+}, 1200);
+});
+</script>
+</body>  
+</html>  
+<?php 
 }
 else {
 	?>
