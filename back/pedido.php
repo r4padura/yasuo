@@ -29,11 +29,20 @@ require_once "controlador.php";
 	</header>
 
 	<div class="topo">
-		<h2>Pedido</h2>
+		<h1>Pedido</h1>
 		<p>faça seu pedido conforme desejado</p>
 	</div>
-
+	
 	<form action="" method="post" class="form-pedido">
+		<h2>Qual o sabor da pizza? </h2>
+		<select name="sabor">
+			<option value="calabresa">Calabresa</option>
+			<option value="frango">Frango</option>
+			<option value="strogonoff">Strogonoff</option>
+			<option value="mussarela">Mussarela</option>
+			<option value="quatroqueijos">4 Queijos</option>
+			<option value="sensacao">Sensação</option>
+		</select>
 		<h2>Qual o tamanho da pizza? </h2> <!-- trazer do BD -->
 		<input type="radio" class="tamanho" name="tamanho" value="broto" id="broto"><label for="broto"></label> Broto<br>
 		<input type="radio" class="tamanho" name="tamanho" value="media" id="media"><label for="media"></label> Média<br>
@@ -43,17 +52,19 @@ require_once "controlador.php";
 		<div class="sabor" >
 		</div>
 
-		borda recheada:<br>
-		<input type="radio" name="borda" value="sim" id="sim"><label for="sim"></label> sim<br>
-		<input type="radio" name="borda" value="nao" id="nao"><label for="nao" ></label> não<br>
+		Borda recheada:<br>
+		<input type="radio" name="borda" value="sim" id="sim"><label for="sim"></label> Sim<br>
+		<input type="radio" name="borda" value="nao" id="nao"><label for="nao" ></label> Não<br>
 
 		<div class="sabor-borda" style="display: none">
-			<input type="radio" name="sabor_borda" value="catupiri" id= "sabor_borda-<?php.$id_borda; ?>"> <label for= "catupiri"></label><br>
-			<input type="radio" name="sabor_borda" value="cheedar" id="sabor_borda-2"><label for= "cheedar">cheedar</label><br>
+			<input type="radio" name="sabor_borda" value="catupiry" id= "sabor_borda-1"><?php.$id_borda ;?><label for= "catupiry">Catupiry</label><br>
+
+			<input type="radio" name="sabor_borda" value="cheedar" id="sabor_borda-2"><label for="cheedar">Cheedar</label><br>
 		</div>
 	</form>
 
-	<form action="" , method="post" class="">
+	<!-- deixar tudo em um form -->
+	<form action="" method="post" class="form-pedido">
 		forma de pagamento:<br>
 		<input type="radio" name="pagamento" value="dinheiro" id= "dinheiro" ><label for="dinheiro">dinheiro</label><br>
 		<input type="radio" name="pagamento" value="cartao" id="cartao" ><label for="cartao">cartao</label><br>
@@ -65,14 +76,13 @@ require_once "controlador.php";
 			<input type="text" name="valor" value= "valor" id= "valor"><label for= "valor">valor</label>
 		</div>
 
-		<div class="">
-
-		</div>		
+		
 		tele-entrega:<br>
 		<input type="radio" name="tele" value="sim">sim<br>
 		<input type="radio" name="tele" value="nao">nao<br>
-
+		<input type="submit" name="envia_pedido" value="Confirmar Pedido" class="envia-pedido">
 	</form>
+
 	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 	<script>
 		$('input[name=borda]').click(function(){
@@ -112,12 +122,12 @@ require_once "controlador.php";
 				url : "teste.php",
 				type : 'post',
 				data : {tamanho : tamanho
-				
-			},
-			beforeSend : function(conteudo){
-				$(".sabor").html("ENVIANDO...");
-			}
-		})
+					
+				},
+				beforeSend : function(conteudo){
+					$(".sabor").html("ENVIANDO...");
+				}
+			})
 			.done(function(msg){
 				$(".sabor").html(msg);
 			})

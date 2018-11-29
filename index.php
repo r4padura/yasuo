@@ -11,6 +11,7 @@ if (isset($_SESSION['login'])) {
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>Yasuo Pizzaria - Home</title>
 		<link rel="stylesheet" href="assets/css/style.css" type="text/css" /> 
+		<link rel="stylesheet" href="assets/css/grid.css" type="text/css">
 
 		<meta property="og:title" content="" />
 		<meta property="og:type" content="website" />
@@ -28,7 +29,7 @@ if (isset($_SESSION['login'])) {
 		<script src="assets/js/jquery-3.3.1.min.js"></script>
 		<script src="assets/js/jquery.mask.js"></script>
 		<script src="assets/js/scripts.js"></script>
-		
+
 	</head> 
 	<body>
 
@@ -38,47 +39,97 @@ if (isset($_SESSION['login'])) {
 					<div class="menu-logo">
 						<a href="index.php">Yasuo Pizzaria</a>
 					</div>
-                    <nav class="menu-nav">
-                      <a href="back/pedido.php">Pedido</a>  
-                      <a href="back/perfilUser.php">Perfil</a>
-                      <a href="back/logout.php">SAIR</a>
-                  </nav>
-              </div>
-              <div class="hero-text">
-                 <h1>Yasuo Pizzaria</h1>
-                 <h3>Confira nosso cardápio e faça seu pedido!</h3>
-                 <a href="#cardapio">Ver cardápio</a>
-             </div>
-         </div>
-     </header>
+					<nav class="menu-nav">
+						<a href="back/pedido.php">Pedido</a>  
+						<a href="back/perfilUser.php">Perfil</a>
+						<a href="back/logout.php">SAIR</a>
+					</nav>
+				</div>
+				<div class="hero-text">
+					<h1>Yasuo Pizzaria</h1>
+					<h3>Confira nosso cardápio e faça seu pedido!</h3>
+					<a href="#cardapio">Ver cardápio</a>
+				</div>
+			</div>
+		</header>
 
-     <section id="cardapio">
-         <div class="cardapio-bg">
-          <h1>Cardapio</h1>
-          <p>Veja nosso cardapio</p>
+		<section id="cardapio">
+			<div class="cardapio-bg">
+				<h1>Cardápio</h1>
+				<p>escolha entre os mais variados sabores</p>
+			</div>
 
-          <ul>
-           <li>Pizza 1</li>
-           <li>Pizza 2</li>
-           <li>Pizza 3</li>
-           <li>Pizza 4</li>
-       </ul>
-   </div>
-</section>
-<script>
- $('.hero-text a[href^="#"]').on('click', function(e) {
-  e.preventDefault();
-  var id = $(this).attr('href'),
-  targetOffset = $(id).offset().top;
+			<div class="cardapio-itens">
+				<!-- <img src="../dev/assets/img/item1.jpg"> -->
+				<h3 class="grid-3">Pizza Calabresa</h3>
+				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+			</div>
 
-  $('html, body').animate({ 
-   scrollTop: targetOffset - 100
-}, 1200);
-});
-</script>
-</body>  
-</html>  
-<?php 
+			<div class="cardapio-itens">
+				<h3 class="grid-3">Pizza Mussarela</h3>
+				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+			</div>
+
+			<div class="cardapio-itens">
+				<h3 class="grid-3">Pizza Frango</h3>
+				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+			</div>
+
+			<div class="cardapio-itens">
+				<h3 class="grid-3">Pizza 4 Queijos</h3>
+				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+			</div>
+
+			<div class="cardapio-itens">
+				<h3 class="grid-3">Pizza Strogonoff</h3>
+				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+			</div>
+
+			<div class="cardapio-itens">
+				<h3 class="grid-3">Pizza Sensação</h3>
+				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+			</div>
+			<a href="back/pedido.php" class="botao-pedido">Fazer pedido</a>
+			
+		</section>
+
+		<section id="footer">
+        	<div class="footer-bg">
+        		<h1>Contato</h1>
+        		<p>encontre-nos nas redes sociais</p>
+        		<div class="media-social">	
+        			<div class="social-media">
+        				<a href="https://www.facebook.com/yasuopizzaria"><img src="../dev/assets/img/fb.png">
+        					<span>/yasuopizzaria</span></a>
+        				</div>
+        				<div class="social-media">
+        					<a href="https://www.instagram.com/yasuopizzaria"><img src="../dev/assets/img/insta.png">
+        						<span>/yasuopizzaria</span></a>
+        					</div>
+        					<div class="social-media">
+        						<a href="tel:00999999999"><img src="../dev/assets/img/whats.png">
+        							<span>(00) 9 9999-9999</span></a>
+        						</div>
+        					</div>
+        				</div>
+
+        				
+        			</section>
+
+		<script>
+			$('.hero-text a[href^="#"]').on('click', function(e) {
+				e.preventDefault();
+				var id = $(this).attr('href'),
+				targetOffset = $(id).offset().top;
+
+				$('html, body').animate({ 
+					scrollTop: targetOffset - 100
+				}, 1200);
+			});
+		</script>
+	</body>  
+	</html>  
+	<?php 
 }
 else {
 	?>
@@ -89,7 +140,8 @@ else {
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>Yasuo Pizzaria - Home</title>
-		<link rel="stylesheet" href="assets/css/style.css" type="text/css" /> 
+		<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="assets/css/grid.css" type="text/css"> 
 
 		<meta property="og:title" content="" />
 		<meta property="og:type" content="website" />
@@ -136,7 +188,7 @@ else {
 						<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 					</div>
 
-					<div class="container">
+					<div class="modal-container">
 						<label for="email"><b>E-mail</b></label>
 						<input type="email" placeholder="E-mail" name="email" required>
 
@@ -167,7 +219,7 @@ else {
             			<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
             		</div>
 
-            		<div class="container">
+            		<div class="modal-container">
             			<center>
             				<h2>Cadastro</h2>
             			</center>
@@ -205,33 +257,84 @@ else {
         </header>
         <section id="cardapio">
         	<div class="cardapio-bg">
-        		<h1>Cardapio</h1>
-        		<p>Veja nosso cardapio</p>
-
-        		<ul>
-        			<li>Pizza 1</li>
-        			<li>Pizza 2</li>
-        			<li>Pizza 3</li>
-        			<li>Pizza 4</li>
-        		</ul>
+        		<h1>Cardápio</h1>
+        		<p>escolha entre os mais variados sabores</p>
         	</div>
+        	
+        	<div class="cardapio-itens">
+        		<!-- <img src="../dev/assets/img/item1.jpg"> -->
+        		<h3 class="grid-3">Pizza Calabresa</h3>
+        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+        	</div>
+
+        	<div class="cardapio-itens">
+        		<h3 class="grid-3">Pizza Mussarela</h3>
+        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+        	</div>
+
+        	<div class="cardapio-itens">
+        		<h3 class="grid-3">Pizza Frango</h3>
+        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+        	</div>
+
+        	<div class="cardapio-itens">
+        		<h3 class="grid-3">Pizza 4 Queijos</h3>
+        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+        	</div>
+
+        	<div class="cardapio-itens">
+        		<h3 class="grid-3">Pizza Strogonoff</h3>
+        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+        	</div>
+
+        	<div class="cardapio-itens">
+        		<h3 class="grid-3">Pizza Sensação</h3>
+        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+        	</div>
+
+        	<a href="#" class="botao-pedido">Fazer pedido</a>
+        	
         </section>
-        <script>
-        	$('.hero-text a[href^="#"]').on('click', function(e) {
-        		e.preventDefault();
-        		var id = $(this).attr('href'),
-        		targetOffset = $(id).offset().top;
 
-        		$('html, body').animate({ 
-        			scrollTop: targetOffset - 100
-        		}, 1200);
-        	});
-        </script>
+        <section id="footer">
+        	<div class="footer-bg">
+        		<h1>Contato</h1>
+        		<p>encontre-nos nas redes sociais</p>
+        		<div class="media-social">	
+        			<div class="social-media">
+        				<a href="https://www.facebook.com/yasuopizzaria"><img src="../dev/assets/img/fb.png">
+        					<span>/yasuopizzaria</span></a>
+        				</div>
+        				<div class="social-media">
+        					<a href="https://www.instagram.com/yasuopizzaria"><img src="../dev/assets/img/insta.png">
+        						<span>/yasuopizzaria</span></a>
+        					</div>
+        					<div class="social-media">
+        						<a href="tel:00999999999"><img src="../dev/assets/img/whats.png">
+        							<span>(00) 9 9999-9999</span></a>
+        						</div>
+        					</div>
+        				</div>
 
-    </body>  
-    
-    </html> 
 
-    <?php
-}
-?>
+        			</section>
+
+        			<script>
+        				$('.hero-text a[href^="#"]').on('click', function(e) {
+        					e.preventDefault();
+        					var id = $(this).attr('href'),
+        					targetOffset = $(id).offset().top;
+
+        					$('html, body').animate({ 
+        						scrollTop: targetOffset - 100
+        					}, 1200);
+        				});
+        			</script>
+
+        		</body>  
+
+        		</html> 
+
+        		<?php
+        	}
+        	?>
