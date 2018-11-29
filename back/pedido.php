@@ -33,7 +33,7 @@ require_once "controlador.php";
 		<p>faça seu pedido conforme desejado</p>
 	</div>
 	
-	<form action="" method="post" class="form-pedido">
+	<form action="envia_pedido.php" method="post" class="form-pedido">
 		<h2>Qual o sabor da pizza? </h2>
 		<select name="sabor">
 			<option value="calabresa">Calabresa</option>

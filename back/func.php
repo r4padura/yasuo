@@ -20,8 +20,9 @@ function buscar ($conecta,$selecao, $tabela, $where){
 	if ($where != null){
 
 	  $sql= $sql."WHERE ".$where;
-	}
 
+	}
+	
 	$result = mysqli_query($conecta,$sql);
 	
 

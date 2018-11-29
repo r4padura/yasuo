@@ -1,6 +1,7 @@
 <?php
 require_once("back/conecta.php");
-session_start();
+require_once("back/controlador.php");
+
 if (isset($_SESSION['login'])) {
 	?>
 	<!doctype html>
@@ -60,24 +61,23 @@ if (isset($_SESSION['login'])) {
 			</div>
 			<?php 
 				$selecao = '*';
-				$tabela - 'tabela';
-				$where = 'status = n';
-				$result = buscar($selecao, $tabela, $where);
-				if (mysqli_num_rows($result) >0 ) {
-					$resultado = mysqli_fetch_array($result);
-					foreach ($resultado as $ => $value) {
-						# code...
+				$tabela = 'sabor';
+				$where = 'status = "n"';
+				$result = buscar($conecta, $selecao, $tabela, $where);
+
+				if ($result) {
+
+					$sabores = mysqli_fetch_all($result);
+					
+					foreach ($sabores as $sabor) {  ?>
+						<div class="cardapio-itens">
+							<h3 class="grid-3"><?php echo $sabor; ?></h3>
+							<p class="grid-6"><?php echo $sabor;?> </p>
+						</div><?php
 					}
 				}
-				$nome = $resultado['nome'];
-				$descricao = $resultado['ingredientes'];
 			?>
-			<div class="cardapio-itens">
-				
-				<h3 class="grid-3"><?php echo $nome;?></h3>
-
-				<p class="grid-6"><?php echo $descricao;?></p>
-			</div>
+			
 
 			
 			<a href="back/pedido.php" class="botao-pedido">Fazer pedido</a>
