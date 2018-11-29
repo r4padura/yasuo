@@ -23,26 +23,27 @@ else
 //-----------------------------------Cadastro_clientes------------------------------------------------------------------------------------
 
 if(isset($_POST['acao']) && ($_POST['acao']=="cadastro_pizza")){
-$status=$_POST["status"];
-$nome=$_POST["nome"];
+$status=$_POST['status'];
+$nome=$_POST['nome'];
 $tabela="sabor";
 $insert="ingredientes, status, nome";
 
 
-	if($status = "b"){
-		$ingredientes= "borda";
-		$values = "$ingredientes, $status, $nome";
+	if($status === "b"){
+		$descricao= "borda";
+		$values = "'$descricao', '$status', '$nome'";
 		$result=cadastro($conecta,$tabela,$insert,$values);
 
 	}
 	else{
-	$ingredientes= $_POST["ingredientes"];
-		$values = "$ingredientes, $status, $nome";
+		$descricao= $_POST["descricao"];
+		$values = "'$descricao', '$status', '$nome'";
 		$result=cadastro($conecta,$tabela,$insert,$values);
 	
 	}
+
 if($result) {
-	header('Location: ../index.php');
+	header('Location: ../admin.php');
 }
 else
 	echo "erro";

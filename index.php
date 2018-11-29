@@ -58,37 +58,28 @@ if (isset($_SESSION['login'])) {
 				<h1>Cardápio</h1>
 				<p>escolha entre os mais variados sabores</p>
 			</div>
-
+			<?php 
+				$selecao = '*';
+				$tabela - 'tabela';
+				$where = 'status = n';
+				$result = buscar($selecao, $tabela, $where);
+				if (mysqli_num_rows($result) >0 ) {
+					$resultado = mysqli_fetch_array($result);
+					foreach ($resultado as $ => $value) {
+						# code...
+					}
+				}
+				$nome = $resultado['nome'];
+				$descricao = $resultado['ingredientes'];
+			?>
 			<div class="cardapio-itens">
-				<!-- <img src="../dev/assets/img/item1.jpg"> -->
-				<h3 class="grid-3">Pizza Calabresa</h3>
-				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
+				
+				<h3 class="grid-3"><?php echo $nome;?></h3>
+
+				<p class="grid-6"><?php echo $descricao;?></p>
 			</div>
 
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza Mussarela</h3>
-				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-			</div>
-
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza Frango</h3>
-				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-			</div>
-
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza 4 Queijos</h3>
-				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-			</div>
-
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza Strogonoff</h3>
-				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-			</div>
-
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza Sensação</h3>
-				<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-			</div>
+			
 			<a href="back/pedido.php" class="botao-pedido">Fazer pedido</a>
 			
 		</section>

@@ -52,15 +52,20 @@ require_once "controlador.php";
 	</div>
 
 	<div class="form-cad-pizza">
-		<form action="controlador.php">
+		<form action="controlador.php" method="post">
 			<div class="cad-pizzabg">
 				<label for="nomeSabor"><b>Sabor da pizza:</b></label>
-				<input type="text" name="nomeSabor" id="" value="">
+				<input type="text" name="nome" id="" value="">
 
-				<label for="ingredientes"><b>Ingredientes:</b></label>
-				<textarea name="ingredientes" id="" value=""></textarea>
+				<label for="nomeSabor"><b>Status:</b></label>
+				<br>
+				<input type="radio" name="status" id="b" value="b"> Borda
+				<input type="radio" name="status" id="n" value="n"> Normal <br>
 
-				<button type="submit">Cadastrar Pizza</button>
+				<label for="descricao"><b>Ingredientes:</b></label>
+				<textarea name="descricao" id="" value=""></textarea>
+
+				<button type="submit" name="acao" value="cadastro_pizza">Cadastrar Pizza</button>
 			</div>
 		</form> 
 

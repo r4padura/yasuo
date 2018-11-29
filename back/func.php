@@ -4,7 +4,7 @@
 function cadastro($conecta,$tabela,$insert,$values){
 	$sql = "INSERT INTO $tabela ($insert)  values ($values)";
 	$result = mysqli_query($conecta,$sql);
-
+	
 	return $result;
 }
 
