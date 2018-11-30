@@ -60,9 +60,42 @@ require_once "cabecalho.php";
     </div>
     <button class="ver-usuario">Usuários</button>
     <div>
-        <p><?php 
-        echo 'Nome: ' , $_SESSION['nome'], ' - Tipo: ', $_SESSION['tipo'];
-        ?></p>
+        
+        <div class="lista-pedidos">
+            <table>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+                <th>Endereço</th>
+            </tr>
+            <?php 
+                $selecao = '*';
+                $tabela = 'cliente';
+                $id = $_SESSION['id'];
+                $where = 'idcliente = "$id"';
+                $result = buscar($conecta, $selecao, $tabela, $where);
+
+                if ($result) {
+
+                    $clientes = mysqli_fetch_all($result);
+                    
+                    foreach ($clientes as $indice=>$cliente) {  ?>
+                        <td>
+                            <tr><?php echo $cliente[1]; ?></tr>
+                            <tr><?php echo $cliente[2]; ?></tr>
+                            <tr><?php echo $cliente[3]; ?></tr>
+                            <tr><?php echo $cliente[4]; ?></tr>
+                            <tr><?php echo $cliente[5]; ?></tr>
+                        </td>
+                        <?php
+                    }
+                }
+            ?>
+        </table>
+
+    </div>
 
     </div>
 </div>

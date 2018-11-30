@@ -52,7 +52,7 @@ require_once "controlador.php";
 		<div class="sabor" >
 		</div>
 
-		Borda recheada:<br>
+		<b>Borda recheada:</b><br>
 		<input type="radio" name="borda" value="sim" id="sim"><label for="sim"></label> Sim<br>
 		<input type="radio" name="borda" value="nao" id="nao"><label for="nao" ></label> Não<br>
 
@@ -61,25 +61,25 @@ require_once "controlador.php";
 
 			<input type="radio" name="sabor_borda" value="cheedar" id="sabor_borda-2"><label for="cheedar">Cheedar</label><br>
 		</div>
-	</form>
-
+	
 	<!-- deixar tudo em um form -->
-	<form action="" method="post" class="form-pedido">
-		forma de pagamento:<br>
-		<input type="radio" name="pagamento" value="dinheiro" id= "dinheiro" ><label for="dinheiro">dinheiro</label><br>
-		<input type="radio" name="pagamento" value="cartao" id="cartao" ><label for="cartao">cartao</label><br>
+	
+		<b>Forma de pagamento:</b><br>
+		<input type="radio" name="pagamento" value="dinheiro" id= "dinheiro" ><label for="dinheiro">Dinheiro</label><br>
+		<b>Troco</b><br>
 		<div class="troco" style="display: none">
-			<input type="radio" name="troco" value="sim" id= "sim"> <label for= "sim">sim</label><br>
-			<input type="radio" name="troco" value="nao" id="nao"><label for= "nao">nao</label><br>
-		</div>
+			<input type="radio" name="troco" value="sim" id= "sim"> <label for= "sim">Sim</label><br>
+				<b>Valor</b>
 		<div class="valor" style= "display: none">
-			<input type="text" name="valor" value= "valor" id= "valor"><label for= "valor">valor</label>
+			<input type="text" name="valor" value= "valor" id= "valor"><label for= "valor">Valor</label>
 		</div>
-
+			<input type="radio" name="troco" value="nao" id="nao"><label for= "nao">Não</label><br>
+		</div>
 		
-		tele-entrega:<br>
-		<input type="radio" name="tele" value="sim">sim<br>
-		<input type="radio" name="tele" value="nao">nao<br>
+		<input type="radio" name="pagamento" value="cartao" id="cartao" ><label for="cartao">Cartão</label><br>
+		<b>Tele-entrega:</b><br>
+		<input type="radio" name="tele" value="sim">Sim<br>
+		<input type="radio" name="tele" value="nao">Não<br>
 		<input type="submit" name="envia_pedido" value="Confirmar Pedido" class="envia-pedido">
 	</form>
 
@@ -93,15 +93,12 @@ require_once "controlador.php";
 				$('.sabor-borda').hide();
 		});
 
-
-
-
 		$('input[name=pagamento]').click(function(){
 
 			if($(this).val() == 'dinheiro')
-				$('.sim').show();
+				$('.troco').show();
 			else
-				$('.sim').hide();
+				$('.troco').hide();
 		});
 
 

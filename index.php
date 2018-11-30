@@ -59,37 +59,30 @@ if (isset($_SESSION['login'])) {
 				<h1>Cardápio</h1>
 				<p>escolha entre os mais variados sabores</p>
 			</div>
+			<?php 
+				$selecao = '*';
+				$tabela = 'sabor';
+				$where = 'status = "n"';
+				$result = buscar($conecta, $selecao, $tabela, $where);
 
-			<div class="cardapio-itens">
+				if ($result) {
+
+					$sabores = mysqli_fetch_all($result);
+					
+					foreach ($sabores as $indice=>$sabor) {  ?>
+						<div class="cardapio-itens">
+							<h3 class="grid-3"><?php 
+							       echo $sabor[3]; ?></h3>
+							<p class="grid-6"><?php echo $sabor[1];?> </p>
+						</div><?php
+					}
+				}
+			?>
+			<!--<div class="cardapio-itens">
 				<h3 class="grid-3">Pizza Calabresa</h3>
 				<p class="grid-6">linguiça calabresa, molho espacial, queijo parmesão e massa fina</p>
 			</div>
-
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza Mussarela</h3>
-				<p class="grid-6">tortilha de trigo, suculentos pedaços de carne em molho especial, frijoles, guacamole, sour cream, pico de gallo e arroz mexicano</p>
-			</div>
-
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza Strogonoff</h3>
-				<p class="grid-6">tortilha de trigo, suculentos pedaços de carne em molho especial, frijoles, guacamole, sour cream, pico de gallo e arroz mexicano</p>
-			</div>
-
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza 4 Queijos</h3>
-				<p class="grid-6">tortilha de trigo, suculentos pedaços de carne em molho especial, frijoles, guacamole, sour cream, pico de gallo e arroz mexicano</p>
-			</div>
-
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza Frango</h3>
-				<p class="grid-6">tortilha de trigo, suculentos pedaços de carne em molho especial, frijoles, guacamole, sour cream, pico de gallo e arroz mexicano</p>
-			</div>
-
-			<div class="cardapio-itens">
-				<h3 class="grid-3">Pizza Sensação</h3>
-				<p class="grid-6">tortilha de trigo, suculentos pedaços de carne em molho especial, frijoles, guacamole, sour cream, pico de gallo e arroz mexicano</p>
-			</div>
-			
+			-->
 
 			
 			<a href="back/pedido.php" class="botao-pedido">Fazer pedido</a>
@@ -264,36 +257,30 @@ if (isset($_SESSION['login'])) {
         		<p>escolha entre os mais variados sabores</p>
         	</div>
         	
-        	<div class="cardapio-itens">
-        		<!-- <img src="../dev/assets/img/item1.jpg"> -->
+        	<!--<div class="cardapio-itens">
         		<h3 class="grid-3">Pizza Calabresa</h3>
         		<p class="grid-6">linguiça calabresa, molho espacial, queijo parmesão e massa fina</p>
-        	</div>
+        	</div> -->
 
-        	<div class="cardapio-itens">
-        		<h3 class="grid-3">Pizza Mussarela</h3>
-        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-        	</div>
+        	<?php 
+				$selecao = '*';
+				$tabela = 'sabor';
+				$where = 'status = "n"';
+				$result = buscar($conecta, $selecao, $tabela, $where);
 
-        	<div class="cardapio-itens">
-        		<h3 class="grid-3">Pizza Frango</h3>
-        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-        	</div>
+				if ($result) {
 
-        	<div class="cardapio-itens">
-        		<h3 class="grid-3">Pizza 4 Queijos</h3>
-        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-        	</div>
-
-        	<div class="cardapio-itens">
-        		<h3 class="grid-3">Pizza Strogonoff</h3>
-        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-        	</div>
-
-        	<div class="cardapio-itens">
-        		<h3 class="grid-3">Pizza Sensação</h3>
-        		<p class="grid-6">linguiça calabresa, pedaços de cebola, queijo parmesão, mostarda, molho especial, massa fina, suculentos pedaços de presunto</p>
-        	</div>
+					$sabores = mysqli_fetch_all($result);
+					
+					foreach ($sabores as $indice=>$sabor) {  ?>
+						<div class="cardapio-itens">
+							<h3 class="grid-3"><?php 
+							       echo $sabor[3]; ?></h3>
+							<p class="grid-6"><?php echo $sabor[1];?> </p>
+						</div><?php
+					}
+				}
+			?>
 
         	<a href="#" class="botao-pedido">Fazer pedido</a>
         	
