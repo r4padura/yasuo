@@ -662,3 +662,45 @@ select {
     transition: .8s;
     cursor: pointer;
 }
+
+/* Perfil */
+
+.card {
+    
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card h1 {
+    font-family: 'Lato Light', sans-serif;
+}
+
+.card a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+.card button:hover, a:hover {
+    opacity: 0.7;
+}
