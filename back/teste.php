@@ -1,12 +1,35 @@
 <?php
-$tamanho=$_POST['tamanho'];
+require_once "controlador.php";
+require_once "func.php";
 
-if ($tamanho=='broto')
+$tamanho=$_POST['tamanho'];
+$selecao = '*';
+				$tabela = 'sabor';
+				$where = 'status = "n"';
+				$result = buscar($conecta, $selecao, $tabela, $where);
+
+				if ($result) {
+
+					$sabores = mysqli_fetch_all($result);
+					
+					 
+				}
+
+
+for($i=1; $i <= $tamanho; $i++)
 {
-echo "sabor 1 <input type='text' name='sabor[]'>";
+	echo "Sabor $i";
+?>
+	<select name="sabor[]">
+
+	<?php
+	foreach ($sabores as $indice=>$sabor){
+	echo "<option value='{$sabor[0]}'>{$sabor[3]}</option>";
+	}
+?>
+	</select>
+	<?php
 }
-elseif ($tamanho=='media') {
-	echo "sabor 1 <input type='text' name='sabor[]'>";
-	echo "sabor 2 <input type='text' name='sabor[]'>";
-}
+
+
 ?>

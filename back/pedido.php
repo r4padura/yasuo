@@ -34,20 +34,26 @@ require_once "controlador.php";
 	</div>
 	
 	<form action="envia_pedido.php" method="post" class="form-pedido">
-		<h2>Qual o sabor da pizza? </h2>
-		<select name="sabor">
-			<option value="calabresa">Calabresa</option>
-			<option value="frango">Frango</option>
-			<option value="strogonoff">Strogonoff</option>
-			<option value="mussarela">Mussarela</option>
-			<option value="quatroqueijos">4 Queijos</option>
-			<option value="sensacao">Sensação</option>
-		</select>
 		<h2>Qual o tamanho da pizza? </h2> <!-- trazer do BD -->
-		<input type="radio" class="tamanho" name="tamanho" value="broto" id="broto"><label for="broto"></label> Broto<br>
-		<input type="radio" class="tamanho" name="tamanho" value="media" id="media"><label for="media"></label> Média<br>
-		<input type="radio" class="tamanho" name="tamanho" value="grande" id="grande"><label for="grande"></label> Grande<br>
-		<input type="radio" class="tamanho" name="tamanho" value="familia" id="familia"><label for="familia"></label> Família<br>
+
+
+           <?php 
+                $selecao = '*';
+                $tabela = 'tamanho';
+                $result = buscar($conecta, $selecao, $tabela,null);
+
+                if ($result) {
+
+                    $tamanhos = mysqli_fetch_all($result);
+                    
+                    foreach ($tamanhos as $indice=>$tamanho) {  ?>
+
+                    	<input type="radio" class="tamanho" name="tamanho" value="<?php echo $tamanho[2]; ?>" id="<?php echo $tamanho[1]; ?>"><label for="<?php echo $tamanho[1]; ?>"></label> <?php echo $tamanho[1]; ?><br>
+
+                        <?php
+                    }
+                }
+            ?>		
 
 		<div class="sabor" >
 		</div>
@@ -66,17 +72,18 @@ require_once "controlador.php";
 	
 		<b>Forma de pagamento:</b><br>
 		<input type="radio" name="pagamento" value="dinheiro" id= "dinheiro" ><label for="dinheiro">Dinheiro</label><br>
+		<input type="radio" name="pagamento" value="cartao" id="cartao" ><label for="cartao">Cartão</label><br>
 		<b>Troco</b><br>
 		<div class="troco" style="display: none">
 			<input type="radio" name="troco" value="sim" id= "sim"> <label for= "sim">Sim</label><br>
 				<b>Valor</b>
 		<div class="valor" style= "display: none">
-			<input type="text" name="valor" value= "valor" id= "valor"><label for= "valor">Valor</label>
+			<input type="text" name="valor" value= "" id= "valor"><label for= "valor">Valor</label>
 		</div>
 			<input type="radio" name="troco" value="nao" id="nao"><label for= "nao">Não</label><br>
 		</div>
 		
-		<input type="radio" name="pagamento" value="cartao" id="cartao" ><label for="cartao">Cartão</label><br>
+		
 		<b>Tele-entrega:</b><br>
 		<input type="radio" name="tele" value="sim">Sim<br>
 		<input type="radio" name="tele" value="nao">Não<br>

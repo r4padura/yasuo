@@ -74,21 +74,20 @@ require_once "cabecalho.php";
                 $selecao = '*';
                 $tabela = 'cliente';
                 $id = $_SESSION['id'];
-                $where = 'idcliente = "$id"';
-                $result = buscar($conecta, $selecao, $tabela, $where);
+                $result = buscar($conecta, $selecao, $tabela,null);
 
                 if ($result) {
 
                     $clientes = mysqli_fetch_all($result);
                     
                     foreach ($clientes as $indice=>$cliente) {  ?>
-                        <td>
-                            <tr><?php echo $cliente[1]; ?></tr>
-                            <tr><?php echo $cliente[2]; ?></tr>
-                            <tr><?php echo $cliente[3]; ?></tr>
-                            <tr><?php echo $cliente[4]; ?></tr>
-                            <tr><?php echo $cliente[5]; ?></tr>
-                        </td>
+                        <tr>
+                            <td><?php echo $cliente[0]; ?></td>
+                            <td><?php echo $cliente[1]; ?></td>
+                            <td><?php echo $cliente[2]; ?></td>
+                            <td><?php echo $cliente[3]; ?></td>
+                            <td><?php echo $cliente[6]; ?></td>
+                        </tr>
                         <?php
                     }
                 }
