@@ -1,4 +1,1 @@
 - formulario de pedido funcionar, mostrar pedidos feitos na pag de admin
-- mostrar usuarios cadastrados na pag de admin
-- pagina de perfil apenas do cliente com dados
-- 

@@ -2,7 +2,7 @@
 require_once "back/controlador.php";
 
 if ($_SESSION['tipo'] != 1) {
-    header('Location: ../index.php');
+    header('Location: index.php');
     exit();
 }
 require_once "cabecalho.php";
@@ -11,6 +11,7 @@ require_once "cabecalho.php";
     <!-- printar nome do admin logado <div class="name-user">
 
     </div>-->
+
     <div id="options">
         <button class="ver-pedido">Pedidos</button>
         <div class="lista-pedidos">
@@ -55,7 +56,7 @@ require_once "cabecalho.php";
 
     </div>
     <button class="cadastro-sabor">Cadastrar pizza</button>
-    <div>
+    <div class="add-sabor">
         <a href="back/cadastrar_pizza.php">Adicionar novo sabor de pizza</a>
     </div>
     <button class="ver-usuario">Usuários</button>
@@ -69,6 +70,7 @@ require_once "cabecalho.php";
                 <th>Telefone</th>
                 <th>E-mail</th>
                 <th>Endereço</th>
+                <th>Ação</th>
             </tr>
             <?php 
                 $selecao = '*';
@@ -87,6 +89,8 @@ require_once "cabecalho.php";
                             <td><?php echo $cliente[2]; ?></td>
                             <td><?php echo $cliente[3]; ?></td>
                             <td><?php echo $cliente[6]; ?></td>
+                            <td><a href="back/perfilUser.php"><button class="button-painel">Ver Perfil</button></a></td>
+                            <td><a href="back/controlador.php"><button class="button-painel-exclui" name="acao" value="exclui_usuario">Excluir Usuário</button></a></td>
                         </tr>
                         <?php
                     }

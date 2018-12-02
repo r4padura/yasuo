@@ -68,6 +68,9 @@ $result=buscar($conecta,$selecao, $tabela, $where);
 		$_SESSION['id']=$resultado['id'];
 		$_SESSION['tipo'] = $resultado['tipo'];
 		$_SESSION['nome'] = $resultado['nome'];
+		$_SESSION['email'] = $resultado['email'];
+		$_SESSION['telefone'] = $resultado['telefone'];
+		$_SESSION['endereco'] = $resultado['endereco'];
 
 		if ($resultado['tipo'] == 1) {
 			header('Location: ../admin.php');
@@ -100,9 +103,7 @@ if($result){
 	$result = update($conecta,$endereco,$where);
 	if($result)
 		echo "editado com sucesso";
-
-
-}else {
+}	else {
 		echo "erro";
 	}
 }

@@ -6,11 +6,12 @@ $(function($){
     },
     bind : {
       mask: function(){
+        $('.telefone').mask('(00)0 0000-0000');
         $('.date').mask('00/00/0000');
         $('.time').mask('00:00:00');
         $('.date_time').mask('00/00/0000 00:00:00');
         $('.cep').mask('00000-000');
-        // $('.phone_ddd').mask('(00) 0000-0000');
+        $('.phone_ddd').mask('(00) 0 0000-0000');
         // $('.placa').mask('AAA 0000');
         $('.cpf').mask('000.000.000-00');
         $('.dinheiro').mask('000.000.000.000.000,00', {reverse: true});

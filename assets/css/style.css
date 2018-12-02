@@ -197,7 +197,6 @@ textarea {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
 .modal-container button {
     background: none;
     border: 3px solid #DC965A;
@@ -207,6 +206,7 @@ textarea {
     cursor: pointer;
     width: 50%;
     transition: .8s;
+    font-family: 'Lato';
 }
 
 .modal-container button:hover {
@@ -230,6 +230,7 @@ textarea {
 }
 
 .modal-container {
+    font-style: italic;
     text-align: center;
     padding: 16px;
 }
@@ -318,6 +319,10 @@ textarea {
     background-color: #FFFFFF;
     color: black;
     transition: .5s;
+}
+
+.add-sabor {
+    text-align: center;
 }
 
 .lista-pedidos {
@@ -703,4 +708,46 @@ select {
 
 .card button:hover, a:hover {
     opacity: 0.7;
+}
+
+#options .button-painel {
+    width: 140px;
+    height: 30px;
+    background: none;
+    border: 3px solid #DC965A;
+    font-family: 'Lato Light', sans-serif;
+    font-size: 0.875em;
+    color: #000;
+    cursor: pointer;
+    padding: 3px 20px 3px 20px;
+    align-items: center;
+    margin: 0 10px;
+    transition: .8s;
+}
+
+#options .button-painel:hover {
+    background-color: #DC965A;
+    color: white;
+    transition: .8s;
+}
+
+#options .button-painel-exclui {
+    width: 140px;
+    height: 30px;
+    background: none;
+    border: 3px solid #7a2828;
+    font-family: 'Lato Light', sans-serif;
+    font-size: 0.875em;
+    color: #000;
+    cursor: pointer;
+    padding: 3px 20px 3px 20px;
+    align-items: center;
+    margin: 0 10px;
+    transition: .8s;
+}
+
+#options .button-painel-exclui:hover {
+    background-color: #7a2828;
+    color: white;
+    transition: .8s;
 }

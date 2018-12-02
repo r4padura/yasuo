@@ -1,0 +1,20 @@
+.button-painel {
+	width: 130px;
+    height: 30px;
+    background: none;
+    border: 3px solid #DC965A;
+    font-family: 'Lato Light', sans-serif;
+    font-size: 0.875em;
+    color: #fff;
+    cursor: pointer;
+    padding: 3px 28px 3px 28px;
+    align-items: center;
+    margin: 0 10px;
+    transition: .8s;
+}
+
+.button-painel button:hover {
+    background-color: #DC965A;
+    color: white;
+    transition: .8s;
+}

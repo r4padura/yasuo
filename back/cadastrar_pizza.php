@@ -1,5 +1,9 @@
 <?php
 require_once "controlador.php";
+if ($_SESSION['tipo'] != 1) {
+    header('Location: ../index.php');
+    exit();
+}
 ?>
 
 <!doctype html>

@@ -12,6 +12,8 @@ function cadastro($conecta,$tabela,$insert,$values){
 function update($id,$tabela,$set,$conecta){
 	$sql = "UPDATE $tabela SET $set WHERE id='$id'";
 	$result = mysqli_query($conecta,$sql);
+	var_dump($sql);
+	die();
 	return $result;
 }
 
