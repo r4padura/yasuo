@@ -12,8 +12,7 @@ function cadastro($conecta,$tabela,$insert,$values){
 function update($id,$tabela,$set,$conecta){
 	$sql = "UPDATE $tabela SET $set WHERE id='$id'";
 	$result = mysqli_query($conecta,$sql);
-	var_dump($sql);
-	die();
+
 	return $result;
 }
 
@@ -21,14 +20,10 @@ function buscar ($conecta,$selecao, $tabela, $where){
 	$sql = "SELECT $selecao FROM $tabela ";
 	if ($where != null){
 
-	  $sql= $sql."WHERE ".$where;
-	  
+	  $sql= $sql."WHERE $where";
 	}
-	
-	$result = mysqli_query($conecta,$sql);
-	
 
-	return $result;
+	return  mysqli_fetch_assoc(mysqli_query($conecta,$sql));
 }
 function delete ($id,$tabela,$conecta){
 	$sql = "DELETE * FROM $tabela WHERE id ='$id'";

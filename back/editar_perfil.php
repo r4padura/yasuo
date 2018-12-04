@@ -1,17 +1,27 @@
 <?php 
 require_once "controlador.php";
 
-$id=$_SESSION['id'];
-$result = update($id, $tabela, $set, $conecta);
+$id = $_SESSION['id'];
+$where = "idcliente =" . $id;
 
-if(mysqli_num_rows($result) > 0){
-	$resultado = mysqli_fetch_array($result);
-	
-	$nome = $resultado['nome'];
-	$email = $resultado['email'];
-	$senha = $resultado['senha'];
+$selecao = "*";
+$tabela = "cliente";
+$result = buscar($conecta, $selecao, $tabela, $where);
+
+
+if($result != NULL){
+
+	$nome = $result['nome'];
+	$email = $result['email'];
+	$senha = $result['senha'];
+	$endereco = $result['endereco'];
+	$telefone = $result['telefone'];
 	
 }
+
+// print_r($result);
+
+
 
 ?>
 <!DOCTYPE html>
@@ -44,14 +54,28 @@ if(mysqli_num_rows($result) > 0){
 	<div class="card">
 		<img src="../assets/img/user1.png" style="width:100%">
 		<form action="controlador.php" method="post">
+			<label for="nome"><b>Nome</b></label>
 			<input type="text" name="nome" id="nome" value="<?=$nome?>">
-			<p><?php echo $_SESSION['endereco']; ?></p>
-			<p><?php echo $_SESSION['telefone']; ?></p>
+
+			<label for="endereco"><b>Endereço</b></label>
+			<input type="text" placeholder="Digite seu endereço" name="endereco" value="<?php echo $endereco; ?>">
+
+			<label for="telefone"><b>Telefone</b></label>
+			<input type="text" placeholder="Digite seu número de telefone" name="telefone" value="<?=$telefone?>">
+
+			<label for="email"><b>E-mail</b></label>
+			<input type="email" placeholder="Digite seu melhor E-mail" name="email" value="<?=$email?>">
+
+			<label for="senha"><b>Senha</b></label>
+			<input type="password" placeholder="Digite uma senha" name="senha">
+			<center>
+				<button type="submit" name="acao" value="editar">Concluir Edições</button>
+			</center>
 			<a href="#"><i class="fa fa-dribbble"></i></a>
 			<a href="#"><i class="fa fa-twitter"></i></a>
 			<a href="#"><i class="fa fa-linkedin"></i></a>
 			<a href="#"><i class="fa fa-facebook"></i></a>
-			<button type="submit" name="acao" value="editar">Concluir Edições</button>
+			
 		</form>
 	</div>
 

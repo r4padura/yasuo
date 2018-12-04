@@ -60,17 +60,18 @@ $tabela = 'cliente';
 $where = "email = '$email' and senha= '$senha'";
 $result=buscar($conecta,$selecao, $tabela, $where);
 
-	if(mysqli_num_rows($result)>0){
 
-		$resultado=mysqli_fetch_array($result);
+
+	if($result != NULL){
+
 
 		$_SESSION['login']=true;
-		$_SESSION['id']=$resultado['id'];
-		$_SESSION['tipo'] = $resultado['tipo'];
-		$_SESSION['nome'] = $resultado['nome'];
-		$_SESSION['email'] = $resultado['email'];
-		$_SESSION['telefone'] = $resultado['telefone'];
-		$_SESSION['endereco'] = $resultado['endereco'];
+		$_SESSION['id']=$result['idcliente'];
+		$_SESSION['tipo'] = $result['tipo'];
+		$_SESSION['nome'] = $result['nome'];
+		$_SESSION['email'] = $result['email'];
+		$_SESSION['telefone'] = $result['telefone'];
+		$_SESSION['endereco'] = $result['endereco'];
 
 		if ($resultado['tipo'] == 1) {
 			header('Location: ../admin.php');
