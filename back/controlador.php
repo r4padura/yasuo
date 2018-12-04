@@ -60,18 +60,18 @@ $tabela = 'cliente';
 $where = "email = '$email' and senha= '$senha'";
 $result=buscar($conecta,$selecao, $tabela, $where);
 
+	if(mysqli_num_rows($result)>0){
 
-
-	if($result != NULL){
-
+		$resultado=mysqli_fetch_array($result);
 
 		$_SESSION['login']=true;
-		$_SESSION['id']=$result['idcliente'];
-		$_SESSION['tipo'] = $result['tipo'];
-		$_SESSION['nome'] = $result['nome'];
-		$_SESSION['email'] = $result['email'];
-		$_SESSION['telefone'] = $result['telefone'];
-		$_SESSION['endereco'] = $result['endereco'];
+		$_SESSION['id']=$resultado['idcliente'];
+		$_SESSION['tipo'] = $resultado['tipo'];
+		$_SESSION['nome'] = $resultado['nome'];
+		$_SESSION['email'] = $resultado['email'];
+		$_SESSION['telefone'] = $resultado['telefone'];
+		$_SESSION['endereco'] = $resultado['endereco'];
+		$_SESSION['foto'] = $resultado['foto'];
 
 		if ($resultado['tipo'] == 1) {
 			header('Location: ../admin.php');
@@ -88,6 +88,10 @@ $result=buscar($conecta,$selecao, $tabela, $where);
 //-------------------------------------------------login------------------------------------------------------------------------------
 if(isset($_POST['acao']) && ($_POST['acao']=="editar")){
 
+$nome_arquivo=$_FILES['foto']['name'];  
+$tamanho_arquivo=$_FILES['foto']['size'];
+$arquivo_temporario=$_FILES['foto']['tmp_name'];
+
 $id=$_SESSION['id'];
 $nome=$_POST['nome'];
 $email=$_POST['email'];
@@ -95,19 +99,28 @@ $senha=$_POST['senha'];
 $endereco=$_POST['endereco'];
 $telefone=$_POST['telefone'];
 $tabela="cliente";
-$insert="nome, telefone, email, senha, tipo";
-$values= "$nome, $telefone, $email, $senha, 0";
-$where = 'id = $id';
-$result = update($conecta,$tabela,$insert,$values);
+$set ="nome = $nome , telefone = $telefone, email = $email, senha = $senha";
 
-if($result){
-	$result = update($conecta,$endereco,$where);
+
+
+if (!empty($nome_arquivo)) {
+	if (move_uploaded_file($arquivo_temporario, "../dev/assets/img/$nome_arquivo")) {
+		echo "Foto carregada com sucesso!";
+		$tabela = "cliente";
+		$set = "foto = $foto";
+		
+		$result2 = update($id,$tabela,$set,$conecta);
+	}
+}
+
+
+$result = update($id,$tabela,$set,$conecta);
+
 	if($result)
 		echo "editado com sucesso";
 }	else {
 		echo "erro";
 	}
-}
 
 /*-------------------*/
 

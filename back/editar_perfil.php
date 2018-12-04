@@ -1,27 +1,21 @@
 <?php 
 require_once "controlador.php";
 
-$id = $_SESSION['id'];
-$where = "idcliente =" . $id;
-
+$id=$_GET['id'];
 $selecao = "*";
 $tabela = "cliente";
-$result = buscar($conecta, $selecao, $tabela, $where);
+$where = "idcliente = $id";
+$result = buscar($conecta,$selecao, $tabela, $where);
 
-
-if($result != NULL){
-
-	$nome = $result['nome'];
-	$email = $result['email'];
-	$senha = $result['senha'];
-	$endereco = $result['endereco'];
-	$telefone = $result['telefone'];
+if(mysqli_num_rows($result) > 0){
+	$resultado = mysqli_fetch_array($result);
 	
+	$nome = $resultado['nome'];
+	$email = $resultado['email'];
+	$senha = $resultado['senha'];
+	$endereco = $resultado['endereco'];
+	$telefone = $resultado['telefone'];	
 }
-
-// print_r($result);
-
-
 
 ?>
 <!DOCTYPE html>
@@ -52,13 +46,14 @@ if($result != NULL){
 	</header>
 
 	<div class="card">
-		<img src="../assets/img/user1.png" style="width:100%">
-		<form action="controlador.php" method="post">
-			<label for="nome"><b>Nome</b></label>
-			<input type="text" name="nome" id="nome" value="<?=$nome?>">
+
+		
+		<form action="controlador.php" method="post" enctype="multipart/form-data">
+			<label for="name"><b>Nome</b></label>
+			<input type="text" placeholder="Digite seu nome completo" name="nome" value="<?=$nome?>">
 
 			<label for="endereco"><b>Endereço</b></label>
-			<input type="text" placeholder="Digite seu endereço" name="endereco" value="<?php echo $endereco; ?>">
+			<input type="text" placeholder="Digite seu endereço" name="endereco" value="<?=$endereco?>">
 
 			<label for="telefone"><b>Telefone</b></label>
 			<input type="text" placeholder="Digite seu número de telefone" name="telefone" value="<?=$telefone?>">
@@ -67,15 +62,17 @@ if($result != NULL){
 			<input type="email" placeholder="Digite seu melhor E-mail" name="email" value="<?=$email?>">
 
 			<label for="senha"><b>Senha</b></label>
-			<input type="password" placeholder="Digite uma senha" name="senha">
-			<center>
-				<button type="submit" name="acao" value="editar">Concluir Edições</button>
-			</center>
-			<a href="#"><i class="fa fa-dribbble"></i></a>
+			<input type="password" placeholder="Digite uma senha" name="senha" value="<?=$senha?>">
+
+			<input type="hidden" name ="MAX_FILE_SIZE" value="200000">
+			Foto: <input type="file" name="foto">
+								
+			<!-- <a href="#"><i class="fa fa-dribbble"></i></a>
 			<a href="#"><i class="fa fa-twitter"></i></a>
 			<a href="#"><i class="fa fa-linkedin"></i></a>
-			<a href="#"><i class="fa fa-facebook"></i></a>
-			
+			<a href="#"><i class="fa fa-facebook"></i></a> -->
+			<input type="hidden" name="enviar" value="<?=$id?>">
+			<button type="submit" name="acao" value="editar">Concluir Edições</button>
 		</form>
 	</div>
 

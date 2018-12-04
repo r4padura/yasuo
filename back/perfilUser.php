@@ -1,6 +1,36 @@
 <?php 
 require_once "controlador.php";
 
+if (isset($_GET['id']))
+{
+
+
+	$id=$_GET['id'];
+
+}
+else
+{
+
+	$id=$_SESSION['id'];
+
+}
+	$selecao = "*";
+	$tabela = "cliente";
+	$where = "idcliente = $id";
+	$result = buscar($conecta,$selecao, $tabela, $where);
+
+if(mysqli_num_rows($result) > 0){
+	$resultado = mysqli_fetch_array($result);
+	
+	$nome = $resultado['nome'];
+	$email = $resultado['email'];
+	$endereco = $resultado['endereco'];
+	$telefone = $resultado['telefone'];	
+	$foto = $resultado['foto'];
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,16 +60,16 @@ require_once "controlador.php";
 	</header>
 
 	<div class="card">
-		<img src="../assets/img/user1.png" alt="John" style="width:100%">
-		<h1><?php echo $_SESSION['nome'];?></h1>
-		<p><?php echo $_SESSION['endereco']; ?></p>
-		<p><?php echo $_SESSION['telefone']; ?></p>
-		<a href="#"><i class="fa fa-dribbble"></i></a>
+		<img src="../assets/img/<?=$foto?>" alt="John" style="width:100%">
+		<h1><?php echo $nome;?></h1>
+		<p><?php echo $endereco; ?></p>
+		<p><?php echo $telefone; ?></p>
+		<!-- <a href="#"><i class="fa fa-dribbble"></i></a>
 		<a href="#"><i class="fa fa-twitter"></i></a>
 		<a href="#"><i class="fa fa-linkedin"></i></a>
-		<a href="#"><i class="fa fa-facebook"></i></a>
+		<a href="#"><i class="fa fa-facebook"></i></a> -->
 		
-		<a href="editar_perfil.php"><button>Editar Perfil</button></a>
+		<a href="editar_perfil.php?id=<?php echo $id; ?>"><button>Editar Perfil</button></a>
 		
 	</div>
 
