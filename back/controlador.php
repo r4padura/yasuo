@@ -17,7 +17,7 @@ $result = cadastro($conecta,$tabela,$insert,$values);
 if($result) {
 	include "email.php";
 	header('Location: ../index.php');
-}
+} 
 else
 	echo "erro de cadastro";
 }
@@ -101,7 +101,7 @@ $senha=$_POST['senha'];
 $endereco=$_POST['endereco'];
 $telefone=$_POST['telefone'];
 $tabela="cliente";
-$set ="nome = $nome , telefone = $telefone, email = $email, senha = $senha";
+$set ="nome = '$nome' , telefone = $telefone, email = '$email', senha = $senha";
 
 
 
@@ -109,7 +109,7 @@ if (!empty($nome_arquivo)) {
 	if (move_uploaded_file($arquivo_temporario, "../assets/img/$nome_arquivo")) {
 		echo "Foto carregada com sucesso!";
 		$tabela = "cliente";
-		$set = "foto = '$foto'";
+		$set = "foto = '$nome_arquivo'";
 		
 		$result2 = update($id,$tabela,$set,$conecta);
 	}
@@ -119,7 +119,7 @@ if (!empty($nome_arquivo)) {
 $result = update($id,$tabela,$set,$conecta);
 
 	if($result)
-		echo "editado com sucesso";
+		header('Location: perfilUser.php');
 	else {
 		echo "Não foi possível editar";
 	}
@@ -134,6 +134,15 @@ if (isset($_GET['acao']) && ($_GET['acao']=="logout")) {
 
 /*---------logout */
 
+
+if(isset($_GET['acao']) && ($_GET['acao']=="exclui_usuario")) {
+	$id=$_GET['id'];
+
+	$tabela = "cliente";
+
+	delete($id,$tabela,$conecta);
+	header('Location: ../admin.php');
+}
 
 
 

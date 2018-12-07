@@ -90,7 +90,7 @@ require_once "cabecalho.php";
                             <td><?php echo $cliente[3]; ?></td>
                             <td><?php echo $cliente[6]; ?></td>
                             <td><a href="back/perfilUser.php?id='<?php echo $cliente[0]; ?>'"><button class="button-painel">Ver Perfil</button></a></td>
-                            <td><a href="back/controlador.php"><button class="button-painel-exclui" name="acao" value="exclui_usuario">Excluir Usuário</button></a></td>
+                            <td><a href="back/controlador.php?acao=exclui_usuario&id=<?php echo $cliente[0]; ?>"><button class="button-painel-exclui">Excluir Usuário</button></a></td>
                         </tr>
                         <?php
                     }

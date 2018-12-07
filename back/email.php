@@ -5,8 +5,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;	
 
-if (isset($_POST['enviar'])) 
-{
+
 	
 
 // Inclui os arquivos PHPMailer.php e Exception.php e SMTP.php localizados na pasta PHPMailer/src
@@ -23,7 +22,7 @@ require "PHPMailer/src/SMTP.php";
 
 $email = $_POST['email'];
 
-$mensagem = $_POST['mensagem'];
+// $mensagem = $_POST['mensagem'];
 
 // $email_resposta = $_POST['email_resposta'];
 
@@ -40,7 +39,7 @@ $mensagem = $_POST['mensagem'];
     $mail->IsHTML(true); 
 	
 // Pode ser: 0 = não exibe erros, 1 = exibe erros e mensagens, 2 = apenas mensagens	
-    $mail->SMTPDebug = 0;  
+    $mail->SMTPDebug = 1;  
 	
 // habilitando autenticação	
     $mail->SMTPAuth = true;  
@@ -68,15 +67,15 @@ $mensagem = $_POST['mensagem'];
 // Endereço de destino do email
     $mail->AddAddress($email); 
 	
-// Endereço para resposta
+// // Endereço para resposta
 	
-	$mail->addReplyTo($email_resposta);
+// 	$mail->addReplyTo($email_resposta);
 
 // Assunto e Corpo do email
 
-    $mail->Subject = "Teste de SMTP";
+    $mail->Subject = "Cadastro realizado com Sucesso";
 
-    $mail->Body = $mensagem . "<br> Bem-vindo à Yasuo Pizzaria " . $email;
+    $mail->Body =  "<br> Bem-vindo à Yasuo Pizzaria, " . $nome;
 
 // Enviando o email
 
@@ -94,5 +93,4 @@ $mensagem = $_POST['mensagem'];
  }
  echo $message;
 
-}
 ?>
