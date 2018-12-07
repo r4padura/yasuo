@@ -680,8 +680,16 @@ select {
 
 .card {
     width: 400px;
-    margin: auto;
+    margin: 100px auto;
     text-align: center;
+}
+
+.card h1 {
+    font-family: 'Lato Light', sans-serif;
+}
+
+.card p {
+    font-family: 'Lato', sans-serif;
 }
 
 .title {
@@ -702,6 +710,7 @@ select {
     font-size: 18px;
     font-family: 'Lato';
     transition: .8s;
+    margin: 10px 0;
 }
 
 .card button:hover {
@@ -709,14 +718,14 @@ select {
     transition: .8s;
 }
 
-.card h1 {
-    font-family: 'Lato Light', sans-serif;
-}
-
 .card a {
     text-decoration: none;
     font-size: 22px;
     color: black;
+}
+
+.card img {
+    border-radius: 50%;
 }
 
 #options .button-painel {

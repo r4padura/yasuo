@@ -65,11 +65,7 @@ if(mysqli_num_rows($result) > 0){
 		<h1><?php echo $nome;?></h1>
 		<p><?php echo $endereco; ?></p>
 		<p><?php echo $telefone; ?></p>
-		<!-- <a href="#"><i class="fa fa-dribbble"></i></a>
-		<a href="#"><i class="fa fa-twitter"></i></a>
-		<a href="#"><i class="fa fa-linkedin"></i></a>
-		<a href="#"><i class="fa fa-facebook"></i></a> -->
-		
+				
 		<a href="editar_perfil.php?id=<?php echo $id; ?>"><button>Editar Perfil</button></a>
 		
 	</div>

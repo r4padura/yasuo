@@ -33,7 +33,7 @@ require_once "controlador.php";
 		<p>faça seu pedido conforme desejado</p>
 	</div>
 	
-	<form action="envia_pedido.php" method="post" class="form-pedido">
+	<form action="controlador.php" method="post" class="form-pedido">
 		<h2>Qual o tamanho da pizza? </h2> <!-- trazer do BD -->
 
 
@@ -48,7 +48,7 @@ require_once "controlador.php";
                     
                     foreach ($tamanhos as $indice=>$tamanho) {  ?>
 
-                    	<input type="radio" class="tamanho" name="tamanho" value="<?php echo $tamanho[2]; ?>" id="<?php echo $tamanho[1]; ?>"><label for="<?php echo $tamanho[1]; ?>"></label> <?php echo $tamanho[1]; ?><br>
+                    	<input type="radio" class="tamanho" name="tamanho" value="<?php echo $tamanho[0]; ?>" id="<?php echo $tamanho[1]; ?>"><label for="<?php echo $tamanho[1]; ?>"></label> <?php echo $tamanho[1]; ?><br>
 
                         <?php
                     }
@@ -73,21 +73,11 @@ require_once "controlador.php";
 		<b>Forma de pagamento:</b><br>
 		<input type="radio" name="pagamento" value="dinheiro" id= "dinheiro" ><label for="dinheiro">Dinheiro</label><br>
 		<input type="radio" name="pagamento" value="cartao" id="cartao" ><label for="cartao">Cartão</label><br>
-		<b>Troco</b><br>
-		<div class="troco" style="display: none">
-			<input type="radio" name="troco" value="sim" id= "sim"> <label for= "sim">Sim</label><br>
-				<b>Valor</b>
-		<div class="valor" style= "display: none">
-			<input type="text" name="valor" value= "" id= "valor"><label for= "valor">Valor</label>
-		</div>
-			<input type="radio" name="troco" value="nao" id="nao"><label for= "nao">Não</label><br>
-		</div>
-		
-		
+				
 		<b>Tele-entrega:</b><br>
 		<input type="radio" name="tele" value="sim">Sim<br>
 		<input type="radio" name="tele" value="nao">Não<br>
-		<input type="submit" name="envia_pedido" value="Confirmar Pedido" class="envia-pedido">
+		<button type="submit" name="acao" value="pedir" class="envia-pedido">Confirmar Pedido</button>
 	</form>
 
 	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>

@@ -73,9 +73,9 @@ $email = $_POST['email'];
 
 // Assunto e Corpo do email
 
-    $mail->Subject = "Cadastro realizado com Sucesso";
+    $mail->Subject = "Bem-vindo à Yasuo Pizzaria!";
 
-    $mail->Body =  "<br> Bem-vindo à Yasuo Pizzaria, " . $nome;
+    $mail->Body =  "<br> Cadastro realizado com sucesso! Aproveite, " . $nome;
 
 // Enviando o email
 

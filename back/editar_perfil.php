@@ -65,12 +65,10 @@ if(mysqli_num_rows($result) > 0){
 			<input type="password" placeholder="Digite uma senha" name="senha" value="<?=$senha?>">
 
 			<input type="hidden" name ="MAX_FILE_SIZE" value="200000">
-			Foto: <input type="file" name="foto">
+
+			<label for="text"><b>Carregar Foto:</b></label><br>
+			<input type="file" name="foto">
 								
-			<!-- <a href="#"><i class="fa fa-dribbble"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-linkedin"></i></a>
-			<a href="#"><i class="fa fa-facebook"></i></a> -->
 			<input type="hidden" name="enviar" value="<?=$id?>">
 			<button type="submit" name="acao" value="editar">Concluir Edições</button>
 		</form>

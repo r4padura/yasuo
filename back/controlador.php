@@ -145,5 +145,28 @@ if(isset($_GET['acao']) && ($_GET['acao']=="exclui_usuario")) {
 }
 
 
+if(isset($_POST['acao']) && ($_POST['acao']=="pedir")){
+
+$id = $_SESSION['id'];
+$tamanho = $_POST['tamanho'];
+$forma_pagamento = $_POST['pagamento'];
+$tele = $_POST['tele'];
+date_default_timezone_set('America/Sao_Paulo');
+$data = date('Y-m-d H:i');
+$tabela="pedido";
+$insert="cliente_idcliente, data, forma_pagamento, entrega";
+$values= "'$id', '$data', '$forma_pagamento', '$tele'";
+$result = cadastro($conecta,$tabela,$insert,$values);
+
+if($result) {
+	// include "email_pedido.php";
+	// header('Location: ../pedido a caminho.php');
+	header('Location: ../index.php');
+} 
+else
+	echo "erro de pedido";
+} 
+
+
 
 ?>
