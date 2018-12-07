@@ -13,6 +13,7 @@ if (isset($_SESSION['login'])) {
 		<title>Yasuo Pizzaria - Home</title>
 		<link rel="stylesheet" href="assets/css/style.css" type="text/css" /> 
 		<link rel="stylesheet" href="assets/css/grid.css" type="text/css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 		<meta property="og:title" content="" />
 		<meta property="og:type" content="website" />
@@ -58,6 +59,7 @@ if (isset($_SESSION['login'])) {
 				<h1>Cardápio</h1>
 				<p>escolha entre os mais variados sabores</p>
 			</div>
+			
 			<?php 
 			$selecao = '*';
 			$tabela = 'sabor';
@@ -87,20 +89,20 @@ if (isset($_SESSION['login'])) {
 			<h1>Contato</h1>
 			<p>encontre-nos nas redes sociais</p>
 			<div class="media-social">	
-				<div class="social-media">
-					<a href="https://www.facebook.com/yasuopizzaria" target="_blank"><img src="../dev/assets/img/fb.png">
-						<span>/yasuopizzaria</span></a>
-					</div>
-					<div class="social-media">
-						<a href="https://www.instagram.com/yasuopizzaria" target="_blank"><img src="../dev/assets/img/insta.png">
-							<span>/yasuopizzaria</span></a>
-						</div>
-						<div class="social-media">
-							<a href="tel:00999999999"><img src="../dev/assets/img/whats.png">
-								<span>(00) 9 9999-9999</span></a>
-							</div>
-						</div>
-					</div>
+							<div class="social-media">
+								<a href="https://www.facebook.com/yasuopizzaria" target="_blank"><i class="fab fa-facebook-f"></i>
+									<span>/yasuopizzaria</span></a>
+								</div>
+								<div class="social-media">
+									<a href="https://www.instagram.com/yasuopizzaria" target="_blank"><i class="fab fa-instagram"></i>
+										<span>/yasuopizzaria</span></a>
+									</div>
+									<div class="social-media">
+										<a href="tel:00999999999"><i class="fab fa-whatsapp"></i>
+											<span>(00) 9 9999-9999</span></a>
+										</div>
+									</div>
+								</div>
 	</section>
 
 				<script>
@@ -128,7 +130,8 @@ if (isset($_SESSION['login'])) {
 				<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 				<title>Yasuo Pizzaria - Home</title>
 				<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-				<link rel="stylesheet" href="assets/css/grid.css" type="text/css"> 
+				<link rel="stylesheet" href="assets/css/grid.css" type="text/css">
+				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 				<meta property="og:title" content="" />
 				<meta property="og:type" content="website" />
@@ -253,15 +256,15 @@ if (isset($_SESSION['login'])) {
 						<p>encontre-nos nas redes sociais</p>
 						<div class="media-social">	
 							<div class="social-media">
-								<a href="https://www.facebook.com/yasuopizzaria" target="_blank"><img src="../dev/assets/img/fb.png">
+								<a href="https://www.facebook.com/yasuopizzaria" target="_blank"><i class="fab fa-facebook-f"></i>
 									<span>/yasuopizzaria</span></a>
 								</div>
 								<div class="social-media">
-									<a href="https://www.instagram.com/yasuopizzaria" target="_blank"><img src="../dev/assets/img/insta.png">
+									<a href="https://www.instagram.com/yasuopizzaria" target="_blank"><i class="fab fa-instagram"></i>
 										<span>/yasuopizzaria</span></a>
 									</div>
 									<div class="social-media">
-										<a href="tel:00999999999"><img src="../dev/assets/img/whats.png">
+										<a href="tel:00999999999"><i class="fab fa-whatsapp"></i>
 											<span>(00) 9 9999-9999</span></a>
 										</div>
 									</div>

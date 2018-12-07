@@ -26,7 +26,7 @@ if(mysqli_num_rows($result) > 0){
 	$email = $resultado['email'];
 	$endereco = $resultado['endereco'];
 	$telefone = $resultado['telefone'];	
-	$foto = $resultado['foto'];
+	// $foto = $resultado['foto'];
 }
 
 
@@ -60,7 +60,7 @@ if(mysqli_num_rows($result) > 0){
 	</header>
 
 	<div class="card">
-		<img src="../assets/img/<?=$foto?>" alt="John" style="width:100%">
+		<img src="../assets/img/<?=$foto?>" style="width:100%">
 		<h1><?php echo $nome;?></h1>
 		<p><?php echo $endereco; ?></p>
 		<p><?php echo $telefone; ?></p>

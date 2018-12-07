@@ -14,8 +14,10 @@ $tabela="cliente";
 $insert="nome, telefone, email, senha, tipo, endereco";
 $values= "'$nome', '$telefone', '$email', '$senha', 0, '$endereco'";
 $result = cadastro($conecta,$tabela,$insert,$values);
-if($result)
+if($result) {
+	include "email.php";
 	header('Location: ../index.php');
+}
 else
 	echo "erro de cadastro";
 }
@@ -104,10 +106,10 @@ $set ="nome = $nome , telefone = $telefone, email = $email, senha = $senha";
 
 
 if (!empty($nome_arquivo)) {
-	if (move_uploaded_file($arquivo_temporario, "../dev/assets/img/$nome_arquivo")) {
+	if (move_uploaded_file($arquivo_temporario, "../assets/img/$nome_arquivo")) {
 		echo "Foto carregada com sucesso!";
 		$tabela = "cliente";
-		$set = "foto = $foto";
+		$set = "foto = '$foto'";
 		
 		$result2 = update($id,$tabela,$set,$conecta);
 	}
@@ -118,9 +120,10 @@ $result = update($id,$tabela,$set,$conecta);
 
 	if($result)
 		echo "editado com sucesso";
-}	else {
-		echo "erro";
+	else {
+		echo "Não foi possível editar";
 	}
+}
 
 /*-------------------*/
 

@@ -23,7 +23,6 @@ function buscar ($conecta,$selecao, $tabela, $where){
 	  $sql= $sql."WHERE ".$where;
 	  
 	}
-	echo $sql;
 	
 	$result = mysqli_query($conecta,$sql);
 	
