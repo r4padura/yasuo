@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12-Dez-2018 às 20:09
+-- Generation Time: 12-Dez-2018 às 22:34
 -- Versão do servidor: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -60,15 +60,22 @@ CREATE TABLE `pedido` (
   `forma_pagamento` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `entrega` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `valor` double DEFAULT NULL,
-  `cliente_idcliente` int(11) NOT NULL
+  `cliente_idcliente` int(11) NOT NULL,
+  `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Extraindo dados da tabela `pedido`
 --
 
-INSERT INTO `pedido` (`idpedido`, `data`, `forma_pagamento`, `entrega`, `valor`, `cliente_idcliente`) VALUES
-(11, '2018-12-12 06:49:46', 'dinheiro', 'nao', NULL, 1);
+INSERT INTO `pedido` (`idpedido`, `data`, `forma_pagamento`, `entrega`, `valor`, `cliente_idcliente`, `status`) VALUES
+(11, '2018-12-12 06:49:46', 'dinheiro', 'nao', NULL, 1, NULL),
+(12, '2018-12-12 07:23:26', 'cartao', 'sim', NULL, 3, NULL),
+(13, '2018-12-12 07:57:00', 'cartao', 'sim', NULL, 1, NULL),
+(14, '2018-12-12 07:58:00', 'cartao', 'nao', NULL, 1, NULL),
+(15, '2018-12-12 08:04:00', 'cartao', 'nao', NULL, 1, NULL),
+(16, '2018-12-12 08:06:00', 'cartao', 'nao', NULL, 1, NULL),
+(17, '2018-12-12 08:22:00', 'dinheiro', 'sim', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -78,9 +85,41 @@ INSERT INTO `pedido` (`idpedido`, `data`, `forma_pagamento`, `entrega`, `valor`,
 
 CREATE TABLE `pedido_produto` (
   `idpedido_produto` int(11) NOT NULL,
-  `produto_idproduto` int(11) NOT NULL,
-  `tamanho_idtamanho` int(11) NOT NULL
+  `produto_idproduto` int(11) DEFAULT NULL,
+  `tamanho_idtamanho` int(11) NOT NULL,
+  `idpedido` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `pedido_produto`
+--
+
+INSERT INTO `pedido_produto` (`idpedido_produto`, `produto_idproduto`, `tamanho_idtamanho`, `idpedido`) VALUES
+(6, NULL, 2, 15),
+(7, NULL, 2, 16),
+(8, NULL, 2, 17);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pizza`
+--
+
+CREATE TABLE `pizza` (
+  `sabor_idsabor` int(11) NOT NULL,
+  `pedido_produto_idpedido_produto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `pizza`
+--
+
+INSERT INTO `pizza` (`sabor_idsabor`, `pedido_produto_idpedido_produto`) VALUES
+(1, 7),
+(1, 8),
+(3, 7),
+(4, 8),
+(7, 8);
 
 -- --------------------------------------------------------
 
@@ -121,17 +160,6 @@ INSERT INTO `sabor` (`idsabor`, `ingredientes`, `status`, `nome`) VALUES
 (6, 'calda crocante de chocolate, pedaÃ§os de morango, massa fina', 'n', 'Pizza SensaÃ§Ã£o'),
 (7, 'borda', 'b', 'Catupiry'),
 (8, 'borda', 'b', 'Cheddar');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `sabor_has_pedido_produto`
---
-
-CREATE TABLE `sabor_has_pedido_produto` (
-  `sabor_idsabor` int(11) NOT NULL,
-  `pedido_produto_idpedido_produto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -179,7 +207,15 @@ ALTER TABLE `pedido`
 ALTER TABLE `pedido_produto`
   ADD PRIMARY KEY (`idpedido_produto`),
   ADD KEY `fk_pedido_produto` (`produto_idproduto`),
-  ADD KEY `fk_pedido_produto_tamanho1` (`tamanho_idtamanho`);
+  ADD KEY `fk_pedido_produto_tamanho1` (`tamanho_idtamanho`),
+  ADD KEY `fk_pedido_produto1` (`idpedido`);
+
+--
+-- Indexes for table `pizza`
+--
+ALTER TABLE `pizza`
+  ADD PRIMARY KEY (`sabor_idsabor`,`pedido_produto_idpedido_produto`),
+  ADD KEY `fk_sabor_has_pedido_produto_pedido_produto1` (`pedido_produto_idpedido_produto`);
 
 --
 -- Indexes for table `produto`
@@ -192,13 +228,6 @@ ALTER TABLE `produto`
 --
 ALTER TABLE `sabor`
   ADD PRIMARY KEY (`idsabor`);
-
---
--- Indexes for table `sabor_has_pedido_produto`
---
-ALTER TABLE `sabor_has_pedido_produto`
-  ADD PRIMARY KEY (`sabor_idsabor`,`pedido_produto_idpedido_produto`),
-  ADD KEY `fk_sabor_has_pedido_produto_pedido_produto1` (`pedido_produto_idpedido_produto`);
 
 --
 -- Indexes for table `tamanho`
@@ -220,13 +249,13 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT for table `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idpedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idpedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `pedido_produto`
 --
 ALTER TABLE `pedido_produto`
-  MODIFY `idpedido_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idpedido_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `produto`
@@ -261,12 +290,13 @@ ALTER TABLE `pedido`
 --
 ALTER TABLE `pedido_produto`
   ADD CONSTRAINT `fk_pedido_produto` FOREIGN KEY (`produto_idproduto`) REFERENCES `produto` (`idproduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pedido_produto1` FOREIGN KEY (`idpedido`) REFERENCES `pedido` (`idpedido`),
   ADD CONSTRAINT `fk_pedido_produto_tamanho1` FOREIGN KEY (`tamanho_idtamanho`) REFERENCES `tamanho` (`idtamanho`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limitadores para a tabela `sabor_has_pedido_produto`
+-- Limitadores para a tabela `pizza`
 --
-ALTER TABLE `sabor_has_pedido_produto`
+ALTER TABLE `pizza`
   ADD CONSTRAINT `fk_sabor_has_pedido_produto_pedido_produto1` FOREIGN KEY (`pedido_produto_idpedido_produto`) REFERENCES `pedido_produto` (`idpedido_produto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_sabor_has_pedido_produto_sabor1` FOREIGN KEY (`sabor_idsabor`) REFERENCES `sabor` (`idsabor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
