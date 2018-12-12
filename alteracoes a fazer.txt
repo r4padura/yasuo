@@ -1,1 +1,3 @@
-- formulario de pedido funcionar, mostrar pedidos feitos na pag de admin
+- adicionar botao de conclusão de pedido na pag da cozinha, 
+com ação de ir pro controlador e dar update na coluna 'status' (0 para em andamento ou 1 para concluído)
+da tabela pedido, e assim mostrar o status desse pedido na pagina de admin (na tabela com a listagem de pedidos)

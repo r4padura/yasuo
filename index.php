@@ -79,8 +79,9 @@ if (isset($_SESSION['login'])) {
 					}
 				}
 				?>
-			
-				<a href="back/pedido.php" class="botao-pedido">Fazer pedido</a>
+				<div class="pedido-but">
+					<a href="back/pedido.php" class="botao-pedido">Fazer pedido</a>
+				</div> 
 
 	</section>
 

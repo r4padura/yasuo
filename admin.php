@@ -7,37 +7,45 @@ if ($_SESSION['tipo'] != 1) {
 }
 require_once "cabecalho.php";
 ?>
-
-    <!-- printar nome do admin logado <div class="name-user">
-
-    </div>-->
-
     <div id="options">
         <button class="ver-pedido">Pedidos</button>
         <div class="lista-pedidos">
             <table>
               <tr>
                 <th>ID</th>
-                <th>Data</th>
-                <th>Hora</th>
-                <th>Valor</th>
+                <th>Data/Hora</th>
                 <th>Forma de Pagamento</th>
                 <th>Entrega</th>
-                <th>Cliente</th>
+                <th>ID do Cliente</th>
+                <th>Ação</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>20/10/2018</td>
-                <td>19:00</td>
-                <td>R$ 20,00</td>
-                <td>Cartão</td>
-                <td>Sim</td>
-                <td>Alistar</td>
-            </tr>
-            <tr>
+            <?php 
+            $selecao = '*';
+            $tabela = 'pedido';
+            $id = $_SESSION['id'];
+            $result = buscar($conecta, $selecao, $tabela, null);
+
+            if ($result) {
+
+                $pedidos = mysqli_fetch_all($result);
+
+                foreach ($pedidos as $indice=>$pedido) {  ?>
+                    <tr>
+                        <td><?php echo $pedido[0]; ?></td>
+                        <td><?php echo $pedido[1]; ?></td>
+                        <td><?php echo $pedido[2]; ?></td>
+                        <td><?php echo $pedido[3]; ?></td>
+                        <td><?php echo $pedido[4]; ?></td>
+                        <td><?php echo $pedido[5]; ?></td>
+                        <td><a href="cozinha.php?acao=cozinha&idpedido=<?php echo $pedido[0]; ?>">Visualizar Pedido</a>
+                    </tr><?php
+                    }
+                }
+                ?>
+            
+            <!-- <tr>
                 <td>2</td>
                 <td>21/10/2018</td>
-                <td>19:30</td>
                 <td>R$ 10,00</td>
                 <td>Dinheiro</td>
                 <td>Sim</td>
@@ -46,12 +54,11 @@ require_once "cabecalho.php";
             <tr>
                 <td>3</td>
                 <td>22/10/2018</td>
-                <td>21:00</td>
                 <td>R$ 12,00</td>
                 <td>Cartão</td>
                 <td>Não</td>
                 <td>Jinx</td>
-            </tr>
+            </tr> -->
         </table>
 
     </div>
