@@ -69,7 +69,7 @@ if(mysqli_num_rows($result) > 0){
 			<label for="text"><b>Carregar Foto:</b></label><br>
 			<input type="file" name="foto">
 								
-			<input type="hidden" name="enviar" value="<?=$id?>">
+			<input type="hidden" name="id" value="<?=$id?>">
 			<button type="submit" name="acao" value="editar">Concluir Edições</button>
 		</form>
 	</div>

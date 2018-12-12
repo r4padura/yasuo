@@ -3,14 +3,16 @@
 
 function cadastro($conecta,$tabela,$insert,$values){
 	$sql = "INSERT INTO $tabela ($insert)  values ($values)";
+	echo $sql;
 	$result = mysqli_query($conecta,$sql);
-	
+	// var_dump($sql);
+	// die();
 	return $result;
 }
 
 
 function update($id,$tabela,$set,$conecta){
-	$sql = "UPDATE $tabela SET $set WHERE idcliente= $id";
+	$sql = "UPDATE $tabela SET $set WHERE idcliente=$id";
 	$result = mysqli_query($conecta,$sql);
 
 	return $result;

@@ -63,9 +63,9 @@ require_once "controlador.php";
 		<input type="radio" name="borda" value="nao" id="nao"><label for="nao" ></label> Não<br>
 
 		<div class="sabor-borda" style="display: none">
-			<input type="radio" name="sabor_borda" value="catupiry" id= "sabor_borda-1"><?php.$id_borda ;?><label for= "catupiry">Catupiry</label><br>
+			<input type="radio" name="sabor_borda" value="7" id="sabor_borda-1"><label for= "catupiry">Catupiry</label><br>
 
-			<input type="radio" name="sabor_borda" value="cheedar" id="sabor_borda-2"><label for="cheedar">Cheedar</label><br>
+			<input type="radio" name="sabor_borda" value="8" id="sabor_borda-2"><label for="cheedar">Cheedar</label><br>
 		</div>
 	
 	<!-- deixar tudo em um form -->

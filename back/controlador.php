@@ -94,14 +94,14 @@ $nome_arquivo=$_FILES['foto']['name'];
 $tamanho_arquivo=$_FILES['foto']['size'];
 $arquivo_temporario=$_FILES['foto']['tmp_name'];
 
-$id=$_SESSION['id'];
+$id=$_POST['id'];
 $nome=$_POST['nome'];
 $email=$_POST['email'];
 $senha=$_POST['senha'];
 $endereco=$_POST['endereco'];
 $telefone=$_POST['telefone'];
 $tabela="cliente";
-$set ="nome = '$nome' , telefone = $telefone, email = '$email', senha = $senha";
+$set ="nome = '$nome' , telefone = $telefone, email = '$email', senha = $senha, endereco = '$endereco'";
 
 
 
@@ -118,8 +118,10 @@ if (!empty($nome_arquivo)) {
 
 $result = update($id,$tabela,$set,$conecta);
 
-	if($result)
-		header('Location: perfilUser.php');
+
+	if($result) {
+		header('Location: ../admin.php');
+	}
 	else {
 		echo "Não foi possível editar";
 	}
@@ -149,18 +151,45 @@ if(isset($_POST['acao']) && ($_POST['acao']=="pedir")){
 
 $id = $_SESSION['id'];
 $tamanho = $_POST['tamanho'];
+$sabor=$_POST['sabor'];
 $forma_pagamento = $_POST['pagamento'];
 $tele = $_POST['tele'];
 date_default_timezone_set('America/Sao_Paulo');
-$data = date('Y-m-d H:i');
+$data = date('Y-m-d h-i');
+implode('/', array_reverse(explode('-', $data)));
 $tabela="pedido";
 $insert="cliente_idcliente, data, forma_pagamento, entrega";
-$values= "'$id', '$data', '$forma_pagamento', '$tele'";
+$values= "$id, '$data','$forma_pagamento','$tele'";
 $result = cadastro($conecta,$tabela,$insert,$values);
+$last_id = mysqli_insert_id($conecta);
 
+// var_dump($values);
+// die();
 if($result) {
 	// include "email_pedido.php";
 	// header('Location: ../pedido a caminho.php');
+$tabela="pedido_produto";
+$insert="tamanho_idtamanho, idpedido";
+$values= "$tamanho, $last_id";
+$result = cadastro($conecta,$tabela,$insert,$values);
+$last_id = mysqli_insert_id($conecta);
+// echo $last_id;
+// die();
+foreach ($sabor as $id) {
+
+	$tabela="pizza";
+	$insert="sabor_idsabor, pedido_produto_idpedido_produto";
+	$values= "$id, $last_id";
+	$result = cadastro($conecta,$tabela,$insert,$values);	
+}
+if (isset($_POST['sabor_borda']))
+{
+	$sabor_borda=$_POST['sabor_borda'];
+	$tabela="pizza";
+	$insert="sabor_idsabor, pedido_produto_idpedido_produto";
+	$values= "$sabor_borda, $last_id";
+	$result = cadastro($conecta,$tabela,$insert,$values);	
+}
 	header('Location: ../index.php');
 } 
 else
