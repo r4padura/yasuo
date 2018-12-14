@@ -63,8 +63,8 @@ if(mysqli_num_rows($result) > 0){
 	<div class="card">
 		<img src="../assets/img/<?=$nome_arquivo?>" style="width:100%">
 		<h1><?php echo $nome;?></h1>
-		<p><?php echo $endereco; ?></p>
-		<p><?php echo $telefone; ?></p>
+		<p><b>Endereço: </b><?php echo $endereco; ?></p>
+		<p><b>Telefone: </b><?php echo $telefone; ?></p>
 				
 		<a href="editar_perfil.php?id=<?php echo $id; ?>"><button>Editar Perfil</button></a>
 		

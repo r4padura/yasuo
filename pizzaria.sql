@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12-Dez-2018 às 22:34
+-- Generation Time: 14-Dez-2018 às 13:55
 -- Versão do servidor: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -45,8 +45,10 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`idcliente`, `nome`, `telefone`, `email`, `senha`, `tipo`, `endereco`, `foto`) VALUES
 (1, 'Geraldo Alves', '222', 'geraldo@mail.com', '1234', 0, 'Rua 1230', 0x6568206d6f6c652e6a7067),
-(2, 'Christopher', '12345', 'cfr@mail.com', '1010', 1, 'Rua 10', NULL),
-(3, 'Gildo Soares', '32323232', 'gildo@mail.com', '1234', 0, 'Rua 2', NULL);
+(2, 'Christopher', '12345', 'cfr@mail.com', '1010', 1, 'Rua 10', 0x796173756f312e6a7067),
+(3, 'Gildo Gomes', '32323232', 'gildo@mail.com', '1234', 0, 'Rua 2', 0x75736572312e706e67),
+(4, 'Teste', '9998888', 'cfr97@outlook.com', '123', 0, 'Rua 175', 0x6c756369616e2e706e67),
+(7, 'Lucas Hinz', '8888888', 'lucasbkk.11@gmail.com', '123', 0, 'rua 123', 0x796173756f312e6a7067);
 
 -- --------------------------------------------------------
 
@@ -69,13 +71,19 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`idpedido`, `data`, `forma_pagamento`, `entrega`, `valor`, `cliente_idcliente`, `status`) VALUES
-(11, '2018-12-12 06:49:46', 'dinheiro', 'nao', NULL, 1, NULL),
-(12, '2018-12-12 07:23:26', 'cartao', 'sim', NULL, 3, NULL),
-(13, '2018-12-12 07:57:00', 'cartao', 'sim', NULL, 1, NULL),
-(14, '2018-12-12 07:58:00', 'cartao', 'nao', NULL, 1, NULL),
-(15, '2018-12-12 08:04:00', 'cartao', 'nao', NULL, 1, NULL),
-(16, '2018-12-12 08:06:00', 'cartao', 'nao', NULL, 1, NULL),
-(17, '2018-12-12 08:22:00', 'dinheiro', 'sim', NULL, 1, NULL);
+(11, '2018-12-12 06:49:46', 'dinheiro', 'nao', NULL, 1, 0),
+(12, '2018-12-12 07:23:26', 'cartao', 'sim', NULL, 3, 0),
+(13, '2018-12-12 07:57:00', 'cartao', 'sim', NULL, 1, 0),
+(14, '2018-12-12 07:58:00', 'cartao', 'nao', NULL, 1, 0),
+(15, '2018-12-12 08:04:00', 'cartao', 'nao', NULL, 1, 0),
+(16, '2018-12-12 08:06:00', 'cartao', 'nao', NULL, 1, 0),
+(17, '2018-12-12 08:22:00', 'dinheiro', 'sim', NULL, 1, 0),
+(18, '2018-12-13 11:10:00', 'dinheiro', 'sim', NULL, 4, 0),
+(19, '2018-12-13 13:39:00', 'cartao', 'nao', NULL, 4, NULL),
+(20, '2018-12-13 13:43:00', 'cartao', 'sim', NULL, 4, 1),
+(21, '2018-12-14 12:08:00', 'cartao', 'nao', NULL, 1, 1),
+(22, '2018-12-14 12:20:00', 'cartao', 'sim', NULL, 1, 1),
+(23, '2018-12-14 12:28:00', 'dinheiro', 'sim', NULL, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +105,13 @@ CREATE TABLE `pedido_produto` (
 INSERT INTO `pedido_produto` (`idpedido_produto`, `produto_idproduto`, `tamanho_idtamanho`, `idpedido`) VALUES
 (6, NULL, 2, 15),
 (7, NULL, 2, 16),
-(8, NULL, 2, 17);
+(8, NULL, 2, 17),
+(9, NULL, 3, 18),
+(10, NULL, 4, 19),
+(11, NULL, 1, 20),
+(12, NULL, 3, 21),
+(13, NULL, 1, 22),
+(14, NULL, 3, 23);
 
 -- --------------------------------------------------------
 
@@ -117,9 +131,22 @@ CREATE TABLE `pizza` (
 INSERT INTO `pizza` (`sabor_idsabor`, `pedido_produto_idpedido_produto`) VALUES
 (1, 7),
 (1, 8),
+(1, 10),
+(1, 11),
+(1, 12),
+(1, 13),
+(1, 14),
+(2, 9),
 (3, 7),
+(3, 9),
+(3, 14),
 (4, 8),
-(7, 8);
+(4, 14),
+(6, 9),
+(7, 8),
+(8, 9),
+(8, 13),
+(8, 14);
 
 -- --------------------------------------------------------
 
@@ -152,14 +179,15 @@ CREATE TABLE `sabor` (
 --
 
 INSERT INTO `sabor` (`idsabor`, `ingredientes`, `status`, `nome`) VALUES
-(1, 'linguiça calabresa, molho espacial, queijo parmesão, massa fina', 'n', 'Pizza Calabresa'),
-(2, 'queijos mussarela, provolone, cheddar e parmesão, molho espacial, massa fina', 'n', 'Pizza 4 Queijos'),
-(3, 'queijo mussarela, suculentos pedaÃ§os de cebola, molho espacial, massa fina', 'n', 'Pizza Mussarela'),
+(1, 'linguica calabresa, molho espacial, queijo parmesao, massa fina', 'n', 'Pizza Calabresa'),
+(2, 'queijos mussarela, provolone, cheddar e parmesao, molho espacial, massa fina', 'n', 'Pizza 4 Queijos'),
+(3, 'queijo mussarela, suculentos pedacos de cebola, molho espacial, massa fina', 'n', 'Pizza Mussarela'),
 (4, 'strogonoff de carne, molho espacial, massa fina', 'n', 'Pizza Strogonoff'),
 (5, 'frango com catupiry, molho espacial, massa fina', 'n', 'Pizza Frango'),
-(6, 'calda crocante de chocolate, pedaÃ§os de morango, massa fina', 'n', 'Pizza SensaÃ§Ã£o'),
-(7, 'borda', 'b', 'Catupiry'),
-(8, 'borda', 'b', 'Cheddar');
+(6, 'calda crocante de chocolate, pedacos de morango, massa fina', 'n', 'Pizza Sensacao'),
+(7, 'Borda', 'b', 'Catupiry'),
+(8, 'Borda', 'b', 'Cheddar'),
+(10, 'Chocolate com queijo', 'n', 'Pizza Chocolate');
 
 -- --------------------------------------------------------
 
@@ -243,19 +271,19 @@ ALTER TABLE `tamanho`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idpedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idpedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `pedido_produto`
 --
 ALTER TABLE `pedido_produto`
-  MODIFY `idpedido_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idpedido_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `produto`
@@ -267,7 +295,7 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT for table `sabor`
 --
 ALTER TABLE `sabor`
-  MODIFY `idsabor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idsabor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tamanho`

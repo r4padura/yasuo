@@ -14,6 +14,12 @@ function cadastro($conecta,$tabela,$insert,$values){
 function update($id,$tabela,$set,$conecta){
 	$sql = "UPDATE $tabela SET $set WHERE idcliente=$id";
 	$result = mysqli_query($conecta,$sql);
+	return $result;
+}
+
+function updatePedido($id,$tabela,$set,$conecta) {
+	$sql = "UPDATE $tabela SET $set WHERE idpedido=$id";
+	$result = mysqli_query($conecta, $sql);
 
 	return $result;
 }
@@ -34,7 +40,6 @@ function buscar ($conecta,$selecao, $tabela, $where){
 function delete ($id,$tabela,$conecta){
 	$sql = "DELETE FROM $tabela WHERE idcliente=$id";
 	$result = mysqli_query($conecta,$sql);
-
 	return $result;
 }
 

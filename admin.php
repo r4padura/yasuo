@@ -17,7 +17,7 @@ require_once "cabecalho.php";
                 <th>Forma de Pagamento</th>
                 <th>Entrega</th>
                 <th>ID do Cliente</th>
-                <th>Ação</th>
+                <th>Status</th>
             </tr>
             <?php 
             $selecao = '*';
@@ -30,6 +30,7 @@ require_once "cabecalho.php";
                 $pedidos = mysqli_fetch_all($result);
 
                 foreach ($pedidos as $indice=>$pedido) {  ?>
+                    <div class="lista-pedidos">
                     <tr>
                         <td><?php echo $pedido[0]; ?></td>
                         <td><?php echo $pedido[1]; ?></td>
@@ -37,28 +38,12 @@ require_once "cabecalho.php";
                         <td><?php echo $pedido[3]; ?></td>
                         <td><?php echo $pedido[4]; ?></td>
                         <td><?php echo $pedido[5]; ?></td>
-                        <td><a href="cozinha.php?acao=cozinha&idpedido=<?php echo $pedido[0]; ?>">Visualizar Pedido</a>
-                    </tr><?php
+                        <td><?php echo $pedido[6]; ?></td>
+                        <td><a href="cozinha.php?acao=cozinha&idpedido=<?php echo $pedido[0]; ?>" target="_blank"><button class="button-painel-pedido">Detalhes do Pedido</button></a>
+                    </tr></div><?php
                     }
-                }
+                } 
                 ?>
-            
-            <!-- <tr>
-                <td>2</td>
-                <td>21/10/2018</td>
-                <td>R$ 10,00</td>
-                <td>Dinheiro</td>
-                <td>Sim</td>
-                <td>Miss Fortune</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>22/10/2018</td>
-                <td>R$ 12,00</td>
-                <td>Cartão</td>
-                <td>Não</td>
-                <td>Jinx</td>
-            </tr> -->
         </table>
 
     </div>
@@ -95,9 +80,10 @@ require_once "cabecalho.php";
                             <td><?php echo $cliente[1]; ?></td>
                             <td><?php echo $cliente[2]; ?></td>
                             <td><?php echo $cliente[3]; ?></td>
+
                             <td><?php echo $cliente[6]; ?></td>
                             <td><a href="back/perfilUser.php?id='<?php echo $cliente[0]; ?>'" target="_blank"><button class="button-painel">Ver Perfil</button></a></td>
-                            <td><a href="back/controlador.php?acao=exclui_usuario&id=<?php echo $cliente[0]; ?>"><button class="button-painel-exclui">Excluir Usuário</button></a></td>
+                            <td><a href="back/controlador.php?acao=exclui_usuario&id='<?php echo $cliente[0]; ?>'"><button class="button-painel-exclui">Excluir Usuário</button></a></td>
                         </tr>
                         <?php
                     }
